@@ -2518,6 +2518,8 @@ pub(crate) async fn keysend(
                 expires_at: None,
                 description: None,
                 description_hash: None,
+                rgb_contract_id: None,
+                rgb_amount: None,
             },
         )?;
         if let Some((contract_id, rgb_amount)) = rgb_payment {
@@ -3052,6 +3054,8 @@ pub(crate) async fn ln_invoice(
                 expires_at: Some(created_at + payload.expiry_sec as u64),
                 description,
                 description_hash,
+                rgb_contract_id: contract_id.map(|c| c.to_string()),
+                rgb_amount: payload.asset_amount,
             },
         );
 
@@ -4084,6 +4088,8 @@ pub(crate) async fn send_payment(
                     expires_at: None,
                     description: None,
                     description_hash: None,
+                    rgb_contract_id: None,
+                    rgb_amount: None,
                 },
             )?;
 
@@ -4179,6 +4185,8 @@ pub(crate) async fn send_payment(
                     expires_at: None,
                     description,
                     description_hash,
+                    rgb_contract_id: None,
+                    rgb_amount: None,
                 },
             )?;
             let payment_hash = PaymentHash(invoice.payment_hash().to_byte_array());
