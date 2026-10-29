@@ -15,7 +15,7 @@ RUN apt-get update && apt install -y --no-install-recommends \
 
 RUN groupadd -g 1000 user \
     && useradd -u 1000 -g user -M -s /usr/sbin/nologin user \
-    && mkdir -p /RLNdata && chown user:user /RLNdata
+    && mkdir -p /data/rln && chown user:user /data/rln
 
 USER user
 
